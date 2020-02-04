@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>19944633568-h7l62uku5kbgqr8u4fuu6v79d3rit0p7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.19944633568-h7l62uku5kbgqr8u4fuu6v79d3rit0p7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAqgUFvyzN4sa_BnFoXGKgEeTktLiE_TYA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>19944633568</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.philiptwal.SocialNetworkProjectUpdated</string>
+	<key>PROJECT_ID</key>
+	<string>socialnetworkprojectupdated</string>
+	<key>STORAGE_BUCKET</key>
+	<string>socialnetworkprojectupdated.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:19944633568:ios:ab99d485ad143101c94c85</string>
+	<key>DATABASE_URL</key>
+	<string>https://socialnetworkprojectupdated.firebaseio.com</string>
+</dict>
+</plist>
