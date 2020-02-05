@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
     
+    let loginVM = LoginViewModel()
     
     @IBOutlet weak var loginEmailTextField: UITextField!
     @IBOutlet weak var loginPasswordTextField: UITextField!
@@ -21,22 +22,16 @@ class ViewController: UIViewController {
     }
 
     
-    
     @IBAction func loginButtonTapped(_ sender: Any) {
         
-        if self.loginEmailTextField.text != "" && self.loginPasswordTextField.text != ""{
+        if loginVM.isValid(email: self.loginEmailTextField.text ?? "", password: self.loginPasswordTextField.text ?? "") {
             
-            
-            Auth.auth().signIn(withEmail: self.loginEmailTextField.text!, password: self.loginPasswordTextField.text!) { (data, error) in
-                
+            loginVM.performLogin(email: self.loginEmailTextField.text!, password: self.loginPasswordTextField.text!) { (error) in
                 if error == nil {
-                    
                     let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
                     UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController = mainStoryBoard.instantiateViewController(identifier: "WelcomeNav")
-                    
-                } else {
-                    
-                    print("Somthin went wrong with signing in \(String(describing: error))")
+                }else {
+                    print("Somthin Went wrong with login \(String(describing: error?.localizedDescription))")
                 }
             }
         }

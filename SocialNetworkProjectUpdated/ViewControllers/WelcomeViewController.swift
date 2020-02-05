@@ -14,10 +14,10 @@ class WelcomeViewController: BaseViewController {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var postsCV: UICollectionView!
+
     
     let dbRef = Database.database().reference()
-    var data = [[String:Any]]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,7 @@ class WelcomeViewController: BaseViewController {
             let userName = userData["Username"]!
             
             self.userNameLabel.text = "Welcome : \(userName)"
-            
-            
+                        
         }
 
         
@@ -52,44 +51,8 @@ class WelcomeViewController: BaseViewController {
                 print("Somthin went wrong getting user profile image : \(String(describing: error))")
             }
         }
-        getPosts()
-        
     }
     
-    
-    
-    func getPosts(){
-        FirebaseServices.shared.getPosts { (posts) in
-            guard let pst = posts else {
-                print("Somthin went wrong fetching posts")
-                return
-            }
-            self.data = pst
-            
-            if self.data.count == 0{
-                print("No posts Found")
-            }else{
-                self.postsCV.reloadData()
-            }
-        }
-    }
-    
-    
-    
-//    func getPosts(){
-//
-//        FirebaseServices.shared.getPosts { (posts) in
-//            if posts != nil{
-//                self.data = posts!
-//            }
-//
-//            if self.data.count == 0{
-//                print("No posts found!")
-//            }else{
-//                self.postsCV.reloadData()
-//            }
-//        }
-//    }
 
     @IBAction func logoutButtonTapped(_ sender: Any) {
         
@@ -119,21 +82,3 @@ class WelcomeViewController: BaseViewController {
     }
 }
 
-
-
-extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? PostCustomCVCell
-        
-        let post = data[indexPath.row]
-        cell?.updatePost(userName: post["userId"] as! String, postDesc: post["comment"] as! String)
-        return cell!
-    }
-    
-    
-}

@@ -65,17 +65,6 @@ class FirebaseServices {
     }
     
     
-    func getPostImg(id: String, complitionHandler: @escaping complition2){
-        let imageName = "PostsImages/\(String(describing: id)).jpeg"
-        var storageRef = StorageReference()
-        storageRef = Storage.storage().reference()
-        storageRef = storageRef.child(imageName)
-        storageRef.getData(maxSize: 1*1024*1024) { (data, error) in
-            complitionHandler(data,error)
-        }
-    }
-    
-    
     func signUp(user: UserModel, complitionHandler: @escaping complition1) {
         
         Auth.auth().createUser(withEmail: user.email!, password: user.password!) { (data, error) in
@@ -217,7 +206,6 @@ class FirebaseServices {
     }
     
     
-    
     func getUserById(userId: String, complitionHandler: @escaping (UserModel) -> Void){
         
         self.dataBaseRef.child("Users").child(userId).observeSingleEvent(of: .value) { (snapShot) in
@@ -239,10 +227,21 @@ class FirebaseServices {
     }
     
     
+    func getPostImg(id: String, complitionHandler: @escaping complition2){
+        let imageName = "PostsImages/\(String(describing: id)).jpeg"
+        var storageRef = StorageReference()
+        storageRef = Storage.storage().reference()
+        storageRef = storageRef.child(imageName)
+        storageRef.getData(maxSize: 1*1024*1024) { (data, error) in
+            complitionHandler(data,error)
+        }
+    }
+    
+    
     func getPosts(complitionHandler: @escaping ([[String:Any]]?) -> Void){
         
-       let fetchPostsListDispatch = DispatchGroup()
-        
+        let fetchPostsListDispatch = DispatchGroup()
+
         var postArr = [[String:Any]]()
         self.dataBaseRef.child("Posts").observeSingleEvent(of: .value) { (snapShot) in
             guard let snap = snapShot.value as? Dictionary<String,Any> else {
@@ -253,21 +252,40 @@ class FirebaseServices {
                 fetchPostsListDispatch.enter()
                 let key = record.key
                 let post = snap[key] as! [String:Any]
-                let postDict = ["userId":post["UserId"]!,
+                var postDict = ["userId":post["UserId"]!,
                                 "comment":post["PostDescription"]!,
-                                "timestamp":post["TimeStamp"]!]
-               
-                postArr.append(postDict)
+                                "timestamp":post["TimeStamp"]!,
+                                "postImg": nil,
+                                "userName": nil,
+                                "userImg": nil]
                 
-                fetchPostsListDispatch.leave()
+                
+                self.getPostImg(id: key) { (data, error) in
+                    
+                    if error == nil && data != nil {
+                        let image = UIImage(data: data!)
+                        postDict["postImg"] = image
+                    }else{
+                        print("Somthing went wrong fetching post image \(String(describing: error?.localizedDescription))")
+                    }
+                }
+                
+                self.getUserById(userId: postDict["userId"] as! String) { (userArray) in
+                    postDict["userName"] = userArray.userName
+                    postDict["userImg"] = userArray.userImg
+                    postArr.append(postDict as [String : Any])
+                    fetchPostsListDispatch.leave()
+                }
+                
             }
+            
             fetchPostsListDispatch.notify(queue: .main){
                
                 complitionHandler(postArr)
-                 
             }
         }
     }
+    
     
     func addFreind(friendId : String, complitionHandler : @escaping complition1){
         let user = Auth.auth().currentUser

@@ -15,12 +15,12 @@ class PostCustomCVCell: UICollectionViewCell {
     @IBOutlet weak var postUserlbl: UILabel!
     @IBOutlet weak var postTextField: UITextView!
     
-//    userImg: UIImage?, postImg: UIImage?,
+
     
-    func updatePost(userName: String, postDesc: String){
+    func updatePost(userImg: UIImage?, postImg: UIImage?, userName: String, postDesc: String){
         
-//        self.postUserImageView.image = userImg
-//        self.postImageView.image = postImg
+        self.postUserImageView.image = userImg
+        self.postImageView.image = postImg
         self.postUserlbl.text = userName
         self.postTextField.text = postDesc
     }
@@ -29,9 +29,9 @@ class PostCustomCVCell: UICollectionViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-//        frame.size.height = 120
-//        self.postUserImageView.layer.cornerRadius = self.postUserImageView.frame.size.width / 2
-//        self.postUserImageView.clipsToBounds = true
+        frame.size.height = 120
+        self.postUserImageView.layer.cornerRadius = self.postUserImageView.frame.size.width / 2
+        self.postUserImageView.clipsToBounds = true
         
     }
 }

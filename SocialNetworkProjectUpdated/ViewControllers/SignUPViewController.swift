@@ -17,7 +17,8 @@ class SignUPViewController: UIViewController {
     @IBOutlet weak var signUpEmailTextField: UITextField!
     @IBOutlet weak var signUpPasswordTextField: UITextField!
     
-  
+    let signUpVM = SignUpViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,17 +29,26 @@ class SignUPViewController: UIViewController {
     
     @IBAction func createAccountButtonTapped(_ sender: Any) {
         
-        if self.signUpUsernameTextField.text != "" && self.signUpEmailTextField.text != "" && self.signUpPasswordTextField.text != "" {
+        if signUpVM.isValid(userName: self.signUpUsernameTextField.text!, password: self.signUpPasswordTextField.text!, email: self.signUpEmailTextField.text!){
             
-            let user = UserModel(userName: self.signUpUsernameTextField.text!, userId: nil, password: self.signUpPasswordTextField.text!, userImg: nil, email: self.signUpEmailTextField.text!)
-            
-            FirebaseServices.shared.signUp(user: user) { (error) in
+            signUpVM.perfomanceSignUp(userName: self.signUpUsernameTextField.text, password: self.signUpPasswordTextField.text, email: self.signUpEmailTextField.text) { (error) in
+                
                 if error == nil {
                     self.dismiss(animated: true, completion: nil)
-                }else {
-                    print("Somthing went wrong creating user \(String(describing: error))")
+                }else{
+                    print(error?.localizedDescription as Any)
                 }
             }
         }
     }
 }
+
+
+//extension SignUPViewController: SignUpViewModelProtocol {
+//
+//    func performSignUpUsingDelegate() {
+//       signUpVM.isValid(userName: self.signUpUsernameTextField.text ?? "", password: self.signUpPasswordTextField.text ?? "", email: self.signUpEmailTextField.text ?? "")
+//    }
+//}
+
+

@@ -12,6 +12,9 @@
 		C124E79D23E68C9600426EF7 /* FriendsCustomCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124E79C23E68C9600426EF7 /* FriendsCustomCVCell.swift */; };
 		C12F9A4123E7A0DB00D6E467 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F9A4023E7A0DB00D6E467 /* AddPostViewController.swift */; };
 		C12F9A4323E7C04100D6E467 /* PostCustomCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F9A4223E7C04100D6E467 /* PostCustomCVCell.swift */; };
+		C141EF5523EA9161004C7229 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141EF5423EA9161004C7229 /* PostsViewController.swift */; };
+		C16E62EE23E9CF7D004C19DD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16E62ED23E9CF7D004C19DD /* SignUpViewModel.swift */; };
+		C16E62F523EA1AFD004C19DD /* loginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16E62F423EA1AFD004C19DD /* loginViewModel.swift */; };
 		C180DAC523E33296001D0AB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180DAC423E33296001D0AB5 /* AppDelegate.swift */; };
 		C180DAC723E33296001D0AB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180DAC623E33296001D0AB5 /* SceneDelegate.swift */; };
 		C180DAC923E33296001D0AB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180DAC823E33296001D0AB5 /* ViewController.swift */; };
@@ -27,7 +30,7 @@
 		C180DAE823E36E7E001D0AB5 /* EditUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180DAE723E36E7E001D0AB5 /* EditUserProfileViewController.swift */; };
 		C1EE4C4023E4825A0014CA93 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EE4C3F23E4825A0014CA93 /* UsersViewController.swift */; };
 		C1EE4C4223E4C4000014CA93 /* myCustomCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EE4C4123E4C4000014CA93 /* myCustomCVCell.swift */; };
-		C1FFC45423E3DB84004CF913 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FFC45323E3DB84004CF913 /* Models.swift */; };
+		C1FFC45423E3DB84004CF913 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FFC45323E3DB84004CF913 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		C124E79C23E68C9600426EF7 /* FriendsCustomCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCustomCVCell.swift; sourceTree = "<group>"; };
 		C12F9A4023E7A0DB00D6E467 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		C12F9A4223E7C04100D6E467 /* PostCustomCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCustomCVCell.swift; sourceTree = "<group>"; };
+		C141EF5423EA9161004C7229 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		C16E62ED23E9CF7D004C19DD /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		C16E62F423EA1AFD004C19DD /* loginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewModel.swift; sourceTree = "<group>"; };
 		C180DAC123E33296001D0AB5 /* SocialNetworkProjectUpdated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialNetworkProjectUpdated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C180DAC423E33296001D0AB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C180DAC623E33296001D0AB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +60,7 @@
 		C180DAE723E36E7E001D0AB5 /* EditUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileViewController.swift; sourceTree = "<group>"; };
 		C1EE4C3F23E4825A0014CA93 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		C1EE4C4123E4C4000014CA93 /* myCustomCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCustomCVCell.swift; sourceTree = "<group>"; };
-		C1FFC45323E3DB84004CF913 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		C1FFC45323E3DB84004CF913 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FA3DC7A9EFE5971E5262AF6E /* Pods-SocialNetworkProjectUpdated.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialNetworkProjectUpdated.debug.xcconfig"; path = "Target Support Files/Pods-SocialNetworkProjectUpdated/Pods-SocialNetworkProjectUpdated.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +93,66 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C1395ED323EA79F6001D2A71 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C12F9A4023E7A0DB00D6E467 /* AddPostViewController.swift */,
+				C141EF5423EA9161004C7229 /* PostsViewController.swift */,
+				C124E79A23E67AED00426EF7 /* FriendsViewController.swift */,
+				C1EE4C3F23E4825A0014CA93 /* UsersViewController.swift */,
+				C180DAE723E36E7E001D0AB5 /* EditUserProfileViewController.swift */,
+				C180DAE323E357C4001D0AB5 /* WelcomeViewController.swift */,
+				C180DADD23E3389E001D0AB5 /* SignUPViewController.swift */,
+				C180DAC823E33296001D0AB5 /* ViewController.swift */,
+				C180DAE123E35492001D0AB5 /* BaseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C1395ED423EA7A6F001D2A71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C1FFC45323E3DB84004CF913 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C1395ED523EA7A7C001D2A71 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C180DAE523E3694A001D0AB5 /* FirebaseServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C1395ED623EA7AB9001D2A71 /* Customization */ = {
+			isa = PBXGroup;
+			children = (
+				C12F9A4223E7C04100D6E467 /* PostCustomCVCell.swift */,
+				C124E79C23E68C9600426EF7 /* FriendsCustomCVCell.swift */,
+				C1EE4C4123E4C4000014CA93 /* myCustomCVCell.swift */,
+			);
+			path = Customization;
+			sourceTree = "<group>";
+		};
+		C141EF5623EA9724004C7229 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				C180DACA23E33296001D0AB5 /* Main.storyboard */,
+				C180DAD223E33299001D0AB5 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		C16E62F323EA128C004C19DD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C16E62ED23E9CF7D004C19DD /* SignUpViewModel.swift */,
+				C16E62F423EA1AFD004C19DD /* loginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		C180DAB823E33296001D0AB5 = {
 			isa = PBXGroup;
 			children = (
@@ -110,22 +176,13 @@
 			children = (
 				C180DAC423E33296001D0AB5 /* AppDelegate.swift */,
 				C180DAC623E33296001D0AB5 /* SceneDelegate.swift */,
-				C1FFC45323E3DB84004CF913 /* Models.swift */,
-				C180DAE523E3694A001D0AB5 /* FirebaseServices.swift */,
-				C180DAE123E35492001D0AB5 /* BaseViewController.swift */,
-				C180DAC823E33296001D0AB5 /* ViewController.swift */,
-				C180DADD23E3389E001D0AB5 /* SignUPViewController.swift */,
-				C180DAE323E357C4001D0AB5 /* WelcomeViewController.swift */,
-				C180DAE723E36E7E001D0AB5 /* EditUserProfileViewController.swift */,
-				C1EE4C3F23E4825A0014CA93 /* UsersViewController.swift */,
-				C124E79A23E67AED00426EF7 /* FriendsViewController.swift */,
-				C12F9A4023E7A0DB00D6E467 /* AddPostViewController.swift */,
-				C1EE4C4123E4C4000014CA93 /* myCustomCVCell.swift */,
-				C124E79C23E68C9600426EF7 /* FriendsCustomCVCell.swift */,
-				C12F9A4223E7C04100D6E467 /* PostCustomCVCell.swift */,
-				C180DACA23E33296001D0AB5 /* Main.storyboard */,
+				C1395ED423EA7A6F001D2A71 /* Models */,
+				C1395ED623EA7AB9001D2A71 /* Customization */,
+				C1395ED523EA7A7C001D2A71 /* Services */,
+				C1395ED323EA79F6001D2A71 /* ViewControllers */,
+				C16E62F323EA128C004C19DD /* ViewModels */,
+				C141EF5623EA9724004C7229 /* StoryBoards */,
 				C180DAD023E33299001D0AB5 /* Assets.xcassets */,
-				C180DAD223E33299001D0AB5 /* LaunchScreen.storyboard */,
 				C180DAD523E33299001D0AB5 /* Info.plist */,
 				C180DACD23E33296001D0AB5 /* SocialNetworkProjectUpdated.xcdatamodeld */,
 				C180DADB23E33566001D0AB5 /* GoogleService-Info.plist */,
@@ -250,12 +307,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C180DADE23E3389E001D0AB5 /* SignUPViewController.swift in Sources */,
+				C16E62EE23E9CF7D004C19DD /* SignUpViewModel.swift in Sources */,
 				C12F9A4123E7A0DB00D6E467 /* AddPostViewController.swift in Sources */,
 				C180DAC923E33296001D0AB5 /* ViewController.swift in Sources */,
 				C124E79B23E67AED00426EF7 /* FriendsViewController.swift in Sources */,
 				C180DAC523E33296001D0AB5 /* AppDelegate.swift in Sources */,
+				C141EF5523EA9161004C7229 /* PostsViewController.swift in Sources */,
 				C1EE4C4023E4825A0014CA93 /* UsersViewController.swift in Sources */,
 				C124E79D23E68C9600426EF7 /* FriendsCustomCVCell.swift in Sources */,
+				C16E62F523EA1AFD004C19DD /* loginViewModel.swift in Sources */,
 				C180DAC723E33296001D0AB5 /* SceneDelegate.swift in Sources */,
 				C180DACF23E33296001D0AB5 /* SocialNetworkProjectUpdated.xcdatamodeld in Sources */,
 				C180DAE823E36E7E001D0AB5 /* EditUserProfileViewController.swift in Sources */,
@@ -264,7 +324,7 @@
 				C180DAE623E3694A001D0AB5 /* FirebaseServices.swift in Sources */,
 				C1EE4C4223E4C4000014CA93 /* myCustomCVCell.swift in Sources */,
 				C180DAE423E357C4001D0AB5 /* WelcomeViewController.swift in Sources */,
-				C1FFC45423E3DB84004CF913 /* Models.swift in Sources */,
+				C1FFC45423E3DB84004CF913 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

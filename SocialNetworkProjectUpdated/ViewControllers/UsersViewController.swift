@@ -34,7 +34,7 @@ class UsersViewController: BaseViewController {
             self.data = users
             
             if self.data.count == 0{
-                print("No users found ")
+                print("No users found")
             } else {
                 self.usersCV.reloadData()
             }
@@ -53,9 +53,9 @@ extension UsersViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! myCustomCVCell
-        let user = data[indexPath.row]
-        
-        cell.updateCell(img: user.userImg!, userLabel: user.userName!, id: user.userId!)
+        let user = self.data[indexPath.row]
+        print(user)
+        cell.updateCell(img: user.userImg ?? UIImage(), userLabel: user.userName!, id: user.userId!)
         
         return cell
     }
