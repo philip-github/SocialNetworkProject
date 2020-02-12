@@ -8,21 +8,8 @@
 
 import Foundation
 
-protocol SignUpViewModelProtocol {
-    
-    func performSignUpUsingDelegate()
-    
-}
-
 
 class SignUpViewModel {
-    
-//    func performSignUpUsingDelegate(){
-//
-//    }
-//
-//    var delegate: SignUpViewModelProtocol?
-    
     
     func perfomanceSignUp(userName: String?, password: String?, email: String? ,complitionHandler: ((Error?) -> ())?){
         

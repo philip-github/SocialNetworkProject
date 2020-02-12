@@ -12,13 +12,14 @@ import FirebaseDatabase
 
 
 class SignUPViewController: UIViewController {
-
+    
+    
     @IBOutlet weak var signUpUsernameTextField: UITextField!
     @IBOutlet weak var signUpEmailTextField: UITextField!
     @IBOutlet weak var signUpPasswordTextField: UITextField!
     
     let signUpVM = SignUpViewModel()
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,9 +31,9 @@ class SignUPViewController: UIViewController {
     @IBAction func createAccountButtonTapped(_ sender: Any) {
         
         if signUpVM.isValid(userName: self.signUpUsernameTextField.text!, password: self.signUpPasswordTextField.text!, email: self.signUpEmailTextField.text!){
-            
+
             signUpVM.perfomanceSignUp(userName: self.signUpUsernameTextField.text, password: self.signUpPasswordTextField.text, email: self.signUpEmailTextField.text) { (error) in
-                
+
                 if error == nil {
                     self.dismiss(animated: true, completion: nil)
                 }else{
@@ -44,11 +45,5 @@ class SignUPViewController: UIViewController {
 }
 
 
-//extension SignUPViewController: SignUpViewModelProtocol {
-//
-//    func performSignUpUsingDelegate() {
-//       signUpVM.isValid(userName: self.signUpUsernameTextField.text ?? "", password: self.signUpPasswordTextField.text ?? "", email: self.signUpEmailTextField.text ?? "")
-//    }
-//}
-
+        
 

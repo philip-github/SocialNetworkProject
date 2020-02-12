@@ -31,9 +31,12 @@ class ViewController: UIViewController {
                     let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
                     UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController = mainStoryBoard.instantiateViewController(identifier: "WelcomeNav")
                 }else {
+                    Alert().showAlert(vc: self, title: "Error", message: "NO Users Found")
                     print("Somthin Went wrong with login \(String(describing: error?.localizedDescription))")
                 }
             }
+        }else{
+            Alert().showAlert(vc: self, title: "Error", message: "Must enter valid email and password")
         }
     }
 }

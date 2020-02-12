@@ -25,11 +25,13 @@ class AddPostViewController: BaseViewController {
         
         if self.postImageView.image == nil {
             
+            Alert().showAlert(vc: self, title:"Error", message: "Error Must upload Image")
             print("Error Must upload Image")
         } else {
             
             FirebaseServices.shared.addPost(img: self.postImageView.image!, postDesc: self.postTextField.text) { (error) in
                 if error == nil{
+                    
                     self.navigationController?.popViewController(animated: true)
                 }else{
                     print("Somthing went wrong uploading post data")

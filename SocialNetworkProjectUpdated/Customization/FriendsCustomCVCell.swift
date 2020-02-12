@@ -12,12 +12,13 @@ class FriendsCustomCVCell: UICollectionViewCell {
     
     @IBOutlet weak var friendImageView : UIImageView!
     @IBOutlet weak var friendLabel : UILabel!
+    var friendId : String?
     
-    
-    func updateData(img: UIImage, friendlbl: String){
+    func updateData(img: UIImage, friendlbl: String ,friendId: String){
         
         self.friendImageView.image = img
         self.friendLabel.text = friendlbl
+        self.friendId = friendId
     }
     
     override public func awakeFromNib() {
@@ -29,4 +30,14 @@ class FriendsCustomCVCell: UICollectionViewCell {
         self.friendImageView.clipsToBounds = true
     }
     
+    
+    @IBAction func removeFriendButtonTapped(_ sender: Any) {
+        let id = self.friendId
+        
+        FirebaseServices.shared.removeFriend(friendId: id!) { (error) in
+            if error == nil {
+                print("friend has been removed!!")
+            }
+        }
+    }
 }

@@ -93,13 +93,23 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - Nimble (8.0.5)
   - PromisesObjC (1.2.8)
+  - Quick (2.2.0)
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
+  - ViewAnimator (2.7.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - Nimble
+  - Quick
+  - SDWebImage
+  - ViewAnimator
 
 SPEC REPOS:
   trunk:
@@ -121,7 +131,11 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - Nimble
     - PromisesObjC
+    - Quick
+    - SDWebImage
+    - ViewAnimator
 
 SPEC CHECKSUMS:
   Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
@@ -142,8 +156,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
 
-PODFILE CHECKSUM: 77db738479de9442bc22b6dfb16bca17bf94c9ba
+PODFILE CHECKSUM: cf3e4020c68661cc10f05fabdcc68f9ce4a22530
 
 COCOAPODS: 1.9.0.beta.2

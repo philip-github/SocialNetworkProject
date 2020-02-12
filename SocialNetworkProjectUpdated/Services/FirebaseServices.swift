@@ -15,6 +15,7 @@ import FirebaseDatabase
 
 
 class FirebaseServices {
+    
     static let shared = FirebaseServices()
     private init() {}
     
@@ -84,6 +85,15 @@ class FirebaseServices {
     }
     
     
+    func logIn(email: String, password: String ,complitionHandler: @escaping complition1){
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (data, error) in
+            
+            complitionHandler(error)
+        }
+    }
+    
+    
     func getUserImage(userId: String ,ComplitionHandler: @escaping complition2){
         let imageName = "UserImage/\(userId).jpeg"
         var storageRef : StorageReference?
@@ -142,6 +152,20 @@ class FirebaseServices {
             } else {
                 complitionHandler(nil)
             }
+        }
+    }
+    
+    
+    func checkFriends(complitionHandler: @escaping ([String:Any]) -> Void){
+        
+    
+        let user = Auth.auth().currentUser?.uid
+        self.dataBaseRef.child("Users").child(user!).child("FriendsList").observeSingleEvent(of: .value) { (snapShot,error) in
+            guard let friends = snapShot.value as? [String:Any] else{
+                print("Somthing went wrong OR no friends found!")
+                return
+            }
+            complitionHandler(friends)
         }
     }
     
@@ -206,6 +230,7 @@ class FirebaseServices {
     }
     
     
+    
     func getUserById(userId: String, complitionHandler: @escaping (UserModel) -> Void){
         
         self.dataBaseRef.child("Users").child(userId).observeSingleEvent(of: .value) { (snapShot) in
@@ -240,14 +265,15 @@ class FirebaseServices {
     
     func getPosts(complitionHandler: @escaping ([[String:Any]]?) -> Void){
         
+        let mainDispatchGroup = DispatchGroup()
         let fetchPostsListDispatch = DispatchGroup()
-
         var postArr = [[String:Any]]()
         self.dataBaseRef.child("Posts").observeSingleEvent(of: .value) { (snapShot) in
             guard let snap = snapShot.value as? Dictionary<String,Any> else {
                 print("Somthing went wrong fetching posts from data base")
                 return
-        }
+            }
+            mainDispatchGroup.enter()
             for record in snap{
                 fetchPostsListDispatch.enter()
                 let key = record.key
@@ -261,10 +287,10 @@ class FirebaseServices {
                 
                 
                 self.getPostImg(id: key) { (data, error) in
-                    
                     if error == nil && data != nil {
                         let image = UIImage(data: data!)
                         postDict["postImg"] = image
+                        
                     }else{
                         print("Somthing went wrong fetching post image \(String(describing: error?.localizedDescription))")
                     }
@@ -280,11 +306,15 @@ class FirebaseServices {
             }
             
             fetchPostsListDispatch.notify(queue: .main){
-               
+                mainDispatchGroup.leave()
+            }
+            
+            mainDispatchGroup.notify(queue: .main){
                 complitionHandler(postArr)
             }
         }
     }
+ 
     
     
     func addFreind(friendId : String, complitionHandler : @escaping complition1){
@@ -292,6 +322,72 @@ class FirebaseServices {
         self.dataBaseRef.child("Users").child(user!.uid).child("FriendsList").updateChildValues([friendId : "FriendID"]) {
             (error, ref) in
             complitionHandler(error)
+        }
+    }
+    
+    
+    func removeFriend(friendId: String ,complitionHandler: @escaping complition1){
+        let user = Auth.auth().currentUser
+        self.dataBaseRef.child("Users").child(user!.uid).child("FriendsList").child(friendId).removeValue() { (error, ref) in
+            complitionHandler(error)
+        }
+    }
+    
+    
+    func sendMessage(friendId: String, messageText: String, complitionHandler: @escaping complition1){
+        
+        let user = Auth.auth().currentUser
+        let sentMessageDict = ["Message": messageText, "TimeStamp":"\(NSDate().timeIntervalSince1970)","MessageType":"Sent"]
+        let recievedMessageDict = ["Message": messageText, "TimeStamp":"\(NSDate().timeIntervalSince1970)","MessageType":"Recived"]
+        
+        self.dataBaseRef.child("Conversations").child(user!.uid).child("Chat").child(friendId).childByAutoId().setValue(sentMessageDict) { (error, ref) in
+            if error == nil{
+                complitionHandler(nil)
+                print("sent Message inserted in data base")
+            }
+        }
+        self.dataBaseRef.child("Conversations").child(friendId).child("Chat").child(user!.uid).childByAutoId().setValue(recievedMessageDict) { (error, ref) in
+            if error == nil {
+                complitionHandler(nil)
+                print("recieved Message inserted in data base")
+            }
+        }
+    }
+    
+    
+    
+    func getMessages(friendId: String, complitionHandler: @escaping ([ConversationModel]?) -> Void){
+        
+        let fetchChatListDispatch = DispatchGroup()
+        let user = Auth.auth().currentUser
+        var chatArray = [ConversationModel]()
+        self.dataBaseRef.child("Conversations").child(user!.uid).child("Chat").child(friendId).observeSingleEvent(of: .value) { (snapShot) in
+            
+            guard let myChat = snapShot.value as? Dictionary<String,Any> else {
+                print("Somthing went wrong !!")
+                return
+            }
+            
+            fetchChatListDispatch.enter()
+            for chat in myChat{
+                let key = chat.key
+                let conversation = myChat[key] as? [String:Any]
+                
+                let convModel = ConversationModel(userId: user!.uid,
+                                                  friendId: friendId,
+                                                  message: conversation?["Message"]! as? String,
+                                                  time: conversation?["TimeStamp"]! as? String,
+                                                  senderImage: nil,
+                                                  reciverImage: nil)
+                                
+                chatArray.append(convModel)
+                print(chatArray)
+            }
+            fetchChatListDispatch.leave()
+
+            fetchChatListDispatch.notify(queue: .main){
+                complitionHandler(chatArray)
+            }
         }
     }
 }

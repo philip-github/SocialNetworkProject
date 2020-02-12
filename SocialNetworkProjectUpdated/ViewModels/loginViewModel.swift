@@ -13,7 +13,7 @@ class LoginViewModel {
     
     func performLogin(email: String, password: String, complitionHandler: @escaping (Error?) -> Void) {
         
-        Auth.auth().signIn(withEmail: email, password: password) { (data, error) in
+        FirebaseServices.shared.logIn(email: email, password: password) { (error) in
             complitionHandler(error)
         }
     }

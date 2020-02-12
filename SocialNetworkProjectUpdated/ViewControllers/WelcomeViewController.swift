@@ -25,7 +25,7 @@ class WelcomeViewController: BaseViewController {
         self.profileImageView.layer.borderWidth = 2
         self.profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         self.profileImageView.clipsToBounds = true
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,15 +38,18 @@ class WelcomeViewController: BaseViewController {
             
             let userName = userData["Username"]!
             
-            self.userNameLabel.text = "Welcome : \(userName)"
-                        
+            DispatchQueue.main.async {
+                self.userNameLabel.text = "Welcome : \(userName)"
+            }
         }
 
         
         FirebaseServices.shared.getUserImage { (data, error) in
             
             if error == nil {
+                DispatchQueue.main.async {
                     self.profileImageView.image = UIImage(data: data!)
+                }
             }else {
                 print("Somthin went wrong getting user profile image : \(String(describing: error))")
             }

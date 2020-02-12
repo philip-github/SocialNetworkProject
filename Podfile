@@ -10,4 +10,14 @@ target 'SocialNetworkProjectUpdated' do
 	pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'ViewAnimator'
+  pod 'SDWebImage'
+  
+    target 'SocialNetworkProjectUpdatedTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
+ end
+    
 end

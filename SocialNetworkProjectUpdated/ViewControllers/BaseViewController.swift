@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class BaseViewController: UIViewController {
 
@@ -19,6 +20,18 @@ class BaseViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backButton
         self.setupNavigationBarWithColor(UIColor.white)
         
+    }
+    
+        override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let fromAnimation = AnimationType.from(direction: .right, offset: 30.0)
+        let zoomAnimation = AnimationType.zoom(scale: 0.2)
+        let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
+        // no array brackets here.
+        UIView.animate(views: view.subviews,
+                       animations: [zoomAnimation, rotateAnimation],
+                       duration: 1.0)
     }
     
     

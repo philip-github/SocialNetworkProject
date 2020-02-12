@@ -10,36 +10,52 @@ import UIKit
 
 class FriendsViewController: BaseViewController {
     
+    lazy var refresher : UIRefreshControl = {
+        let refreshController = UIRefreshControl()
+        refreshController.tintColor = .white
+        refreshController.addTarget(self, action: #selector(getFriends), for: .valueChanged)
+        
+        return refreshController
+    }()
+    
     @IBOutlet weak var friendsCV: UICollectionView!
     
     var data = [UserModel]()
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        friendsCV.refreshControl = refresher
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         getFriends()
-
     }
     
-    func getFriends(){
+    
+    
+    @objc func getFriends(){
         
         FirebaseServices.shared.getFriends { (friendsArray) in
-            guard let friends = friendsArray else {
-                print("Somthing went wrong with getting friends")
-                return
-            }
-            
-            self.data = friends
-            
-            if self.data.count == 0{
-                print("No friends found")
-            }
-            else{
+            if let friends = friendsArray {
+                
+                self.data = friends
+                
+                if self.data.count == 0{
+                    print("No friends found")
+                }
+                else{
+                    DispatchQueue.main.async {
+                        self.friendsCV.reloadData()
+                        self.refresher.endRefreshing()
+                    }
+                }
+            }else{
+                Alert.init().showAlert(vc: self, title: "Alert", message: "No Friends Found")
                 self.friendsCV.reloadData()
             }
         }
@@ -58,9 +74,8 @@ extension FriendsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         let friend = data[indexPath.row]
         
-        cell.updateData(img: friend.userImg!, friendlbl: friend.userName!)
+        cell.updateData(img: friend.userImg!, friendlbl: friend.userName!, friendId: friend.userId!)
         
         return cell
-        
     }
 }
