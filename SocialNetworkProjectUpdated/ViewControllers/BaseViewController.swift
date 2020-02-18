@@ -25,7 +25,7 @@ class BaseViewController: UIViewController {
         override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let fromAnimation = AnimationType.from(direction: .right, offset: 30.0)
+        
         let zoomAnimation = AnimationType.zoom(scale: 0.2)
         let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
         // no array brackets here.

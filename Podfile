@@ -6,12 +6,13 @@ target 'SocialNetworkProjectUpdated' do
   use_frameworks!
 
   # Pods for SocialNetworkProjectUpdated
-	pod 'Firebase/Core'
-	pod 'Firebase/Storage'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'ViewAnimator'
-  pod 'SDWebImage'
+        pod 'Firebase/Core'
+        pod 'Firebase/Storage'
+        pod 'Firebase/Database'
+        pod 'Firebase/Auth'
+        pod 'ViewAnimator'
+        pod 'SDWebImage'
+        pod 'SVProgressHUD'
   
     target 'SocialNetworkProjectUpdatedTests' do
     inherit! :search_paths

@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import SVProgressHUD
 
 class WelcomeViewController: BaseViewController {
 
@@ -30,7 +31,6 @@ class WelcomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         let myUserId = Auth.auth().currentUser?.uid
         
         dbRef.child("Users").child(myUserId!).observeSingleEvent(of: .value) { (snapShot) in
@@ -40,7 +40,9 @@ class WelcomeViewController: BaseViewController {
             
             DispatchQueue.main.async {
                 self.userNameLabel.text = "Welcome : \(userName)"
+                
             }
+            
         }
 
         

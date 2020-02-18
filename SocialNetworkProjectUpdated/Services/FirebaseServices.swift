@@ -333,7 +333,6 @@ class FirebaseServices {
         }
     }
     
-    
     func sendMessage(friendId: String, messageText: String, complitionHandler: @escaping complition1){
         
         let user = Auth.auth().currentUser

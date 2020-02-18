@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import ViewAnimator
+import SVProgressHUD
 
 class PostsViewController: BaseViewController{
     
@@ -35,9 +36,9 @@ class PostsViewController: BaseViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         getPosts()
     }
+    
     
     @objc func getPosts(){
         FirebaseServices.shared.getPosts { (posts) in
@@ -53,6 +54,7 @@ class PostsViewController: BaseViewController{
                 DispatchQueue.main.async { [weak self] in
                     self?.postsCV.reloadData()
                     self?.refresher.endRefreshing()
+                    
                 }
             }
         }
